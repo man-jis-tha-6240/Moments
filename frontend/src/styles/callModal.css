@@ -1,0 +1,99 @@
+.call-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 9;
+	background: #0008;
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.call-box {
+	width: 100%;
+	max-width: 400px;
+	background: rgb(100, 79, 84);
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: center;
+	color: white;
+	padding: 50px 0;
+	border-radius: 5px;
+	box-shadow: 0 0 5px rgb(100, 79, 84);
+}
+
+.call-box h4,
+.call-box h6 {
+	margin-top: 5px;
+}
+
+.call-menu {
+	min-width: 280px;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.call-menu button {
+	font-size: 2rem;
+	background: #eee;
+	padding: 15px;
+	border-radius: 50%;
+	cursor: pointer;
+	border: none;
+	outline: none;
+}
+
+.call-modal .timer {
+	transform: translateY(-15px);
+}
+
+.call-modal .show-vid {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	pointer-events: none;
+}
+
+.call-modal .other-vid {
+	width: 100%;
+	height: 100%;
+}
+
+.call-modal .you-vid {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 300px;
+	max-height: 250px;
+	border-radius: 5px;
+	border: 1px solid coral;
+	z-index: 10;
+}
+
+.call-modal .end-call {
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	pointer-events: initial;
+	font-size: 2rem;
+	background: #eee;
+	padding: 15px;
+	border-radius: 50%;
+	cursor: pointer;
+	border: none;
+	outline: none;
+}
+.call-modal .time-vid{
+	position: absolute;
+	bottom: 100px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: white;
+}

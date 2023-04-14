@@ -1,0 +1,37 @@
+.auth_page{
+	width: 100%;
+	min-height: 100vh;
+	background-color: #fdfdfd;
+	position: relative;
+}
+.auth_page form{
+	font-size: smaller;
+	background-color: #fff;
+	max-width: 600px;
+	width: 1400px;
+	border: 1px solid rgb(224, 27, 109);
+	border-radius: 8px;
+	padding: 10px 25px;
+	position: absolute;
+	top: 46%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	
+}
+.auth_page form h3{
+	font-weight: bold;
+	background: -webkit-linear-gradient(rgb(224, 27, 109), rgb(255, 216, 45));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.auth_page form .pass{
+	position: relative;
+}
+.auth_page form .pass small{
+	position: absolute;
+	top: 50%;
+	right: 5px;
+	transform: translateY(-50%);
+	cursor: pointer;
+	opacity: 0.7;
+}

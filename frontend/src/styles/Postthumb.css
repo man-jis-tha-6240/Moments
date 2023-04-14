@@ -1,0 +1,48 @@
+.post-thumb {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	justify-content: center;
+	grid-gap: 10px;
+	overflow: hidden;
+	margin: 15px 0;
+}
+.post-thumb-display{
+	min-width: 300px;
+	height: 300px;
+	width: 100%;
+	position: relative;
+	cursor: pointer;
+	overflow: hidden;
+}
+.post-thumb-display img,
+.post-thumb-display video {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: cover;
+}
+
+.post-thumb-display .post-thumb-menu {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #0008;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	opacity: 0;
+	transition: 0.3s;
+}
+
+.post-thumb-display:hover .post-thumb-menu {
+	opacity: 1;
+}
+
+.post-thumb-display .post-thumb-menu i{
+	font-size: 1.8rem;
+	color: wheat;
+	margin: 0 25px;
+}
