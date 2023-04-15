@@ -88,6 +88,7 @@ const authCtrl = {
 		try {
 			const rf_token = req.cookies.refreshtoken
 			if (!rf_token) return res.status(400).json({ msg: 'Try to log in now' })
+			console.log('rf-token: '+rf_token)
 			jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, async (err, result) => {
 				if (err) {
 					return res.status(400).json({ msg: 'Try to log in now' })
