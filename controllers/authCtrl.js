@@ -91,7 +91,7 @@ const authCtrl = {
 			console.log('rf-token: '+rf_token)
 			jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, async (err, result) => {
 				if (err) {
-					return res.status(400).json({ msg: 'Try to log in now' })
+					return res.status(400).json({ msg: 'Try to log in now2' })
 				}
 				const user = await User.findById(result.id).select('-password').populate('followers following', 'avatar userName yourName followers following')
 				if (!user) return res.status(400).json({ msg: 'User does not exist' });
