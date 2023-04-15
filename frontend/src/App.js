@@ -11,7 +11,6 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from "react";
-import { refreshToken } from "./redux/actions/authAction";
 import Navbar from "./components/Navbar/Navbar";
 import { PrivateRouter } from "./customRouter/PrivateRouter";
 import StatusModal from "./components/StatusModal";
@@ -27,7 +26,6 @@ function App() {
   const { auth, status, modal, call } = useSelector(state => state);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(refreshToken());
     const socket = io()
     dispatch({ type: GLOBALTYPES.SOCKET, payload: socket })
     return () => socket.close();
