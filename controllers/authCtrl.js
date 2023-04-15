@@ -22,14 +22,6 @@ const authCtrl = {
 				yourName, userName: newUserName, email, password: passwordHash, gender
 			});
 			const access_token = createAccessToken({ id: newUser._id });
-			const refresh_token = createRefreshToken({ id: newUser._id });
-			res.cookie('refreshtoken', refresh_token, {
-				httpOnly: true,
-				secure: true,
-				sameSite: 'None',
-				path: '/api/refresh_token',
-				maxAge: 30 * 24 * 60 * 60 * 1000
-			});
 			await newUser.save();
 			res.json({
 				msg: 'Registered successfully',
@@ -56,15 +48,6 @@ const authCtrl = {
 			if (!isMatch) return res.status(400).json({ msg: "Password is incorrect." })
 
 			const access_token = createAccessToken({ id: user._id })
-			const refresh_token = createRefreshToken({ id: user._id })
-
-			res.cookie('refreshtoken', refresh_token, {
-				httpOnly: true,
-				sameSite: 'None',
-				secure: true,
-				path: '/api/refresh_token',
-				maxAge: 30 * 24 * 60 * 60 * 1000 // 30days
-			})
 
 			res.json({
 				msg: 'Login Success!',
@@ -85,33 +68,10 @@ const authCtrl = {
 		} catch (error) {
 			return res.status(500).json({ msg: error.message });
 		}
-	},
-	generateAccessToken: async (req, res) => {
-		try {
-			const rf_token = req.cookies.refreshtoken
-			if (!rf_token) return res.status(400).json({ msg: 'Try to log in now' })
-			console.log('rf-token: '+rf_token)
-			jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, async (err, result) => {
-				if (err) {
-					return res.status(400).json({ msg: 'Try to log in now2' })
-				}
-				const user = await User.findById(result.id).select('-password').populate('followers following', 'avatar userName yourName followers following')
-				if (!user) return res.status(400).json({ msg: 'User does not exist' });
-				const access_token = createAccessToken({ id: result.id })
-				res.json({
-					access_token,
-					user
-				})
-			})
-		} catch (error) {
-			return res.status(500).json({ msg: error.message });
-		}
 	}
 }
 const createAccessToken = (payload) => {
 	return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' });
 }
-const createRefreshToken = (payload) => {
-	return jwt.sign(payload, process.env.REFRESH_TOKEN_SECRET, { expiresIn: '30d' });
-}
+
 module.exports = authCtrl
